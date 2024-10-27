@@ -7,7 +7,7 @@
   "scripts": {
     "start": "nodemon server.js",
     "start:prod": "node server.js",
-    "test": "jest --detectOpenHandles",
+    "test": "jest --all",
     "release": "semantic-release --branches main"
   },
   "repository": {

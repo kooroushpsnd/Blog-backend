@@ -7,10 +7,10 @@ require("dotenv").config()
 
 beforeAll(async () => {
     await mongoose.connect("mongodb+srv://carrot1382:jV97j5h2FhnRT6ap@test-project.mwxwd.mongodb.net/BlogApp?retryWrites=true&w=majority&appName=test-project");
-}, 10000);
+});
 afterAll(async () => {
     await mongoose.connection.close();
-}, 20000);
+});
 describe("Blog controller" ,() => {
     it('should return 400 for missing Title', async() => {
         const res = await request(app)
