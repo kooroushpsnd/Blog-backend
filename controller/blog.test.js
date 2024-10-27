@@ -10,7 +10,7 @@ beforeAll(async () => {
 }, 10000);
 afterAll(async () => {
     await mongoose.connection.close();
-}, 10000);
+}, 20000);
 describe("Blog controller" ,() => {
     it('should return 400 for missing Title', async() => {
         const res = await request(app)
