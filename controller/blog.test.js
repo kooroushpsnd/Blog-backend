@@ -5,7 +5,7 @@ const fs = require('fs')
 const path = require('path')
 let uploadedImage
 
-require("dotenv").config()
+require("dotenv").config({path: '.env.example'})
 
 beforeAll(async () => {
     const DB = process.env.DATABASE.replace(

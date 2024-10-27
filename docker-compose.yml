@@ -3,7 +3,7 @@ services:
   node-app:
     image: kooroushpsnd/blog-back
     env_file:
-      - ./.env
+      - ./.env.example
     depends_on:
       - mongo
     ports:
