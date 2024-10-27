@@ -17,8 +17,8 @@ beforeAll(async () => {
 afterAll(async () => {
     if (uploadedImage) {
         const imagePath = path.join(__dirname, '../uploads', uploadedImage);
-        if (fs.existsSync(imagePath)) {
-            fs.unlinkSync(imagePath);
+        if (fs.exists(imagePath)) {
+            fs.unlinks(imagePath);
         }
     }
     await mongoose.connection.close();
