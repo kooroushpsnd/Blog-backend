@@ -1,14 +1,26 @@
 const request = require('supertest')
 const app = require('../app')
 const mongoose = require('mongoose');
+const fs = require('fs')
+const path = require('path')
 let uploadedImage
 
-require("dotenv").config()
+require("dotenv").config({ path: '.env.example' })
 
 beforeAll(async () => {
-    await mongoose.connect("mongodb+srv://carrot1382:jV97j5h2FhnRT6ap@test-project.mwxwd.mongodb.net/BlogApp?retryWrites=true&w=majority&appName=test-project");
+    const DB = process.env.DATABASE.replace(
+        '<PASSWORD>',
+        process.env.DATABASE_PASSWORD
+    );
+    await mongoose.connect(DB);
 });
 afterAll(async () => {
+    if (uploadedImage) {
+        const imagePath = path.join(__dirname, '../uploads', uploadedImage);
+        if (fs.existsSync(imagePath)) {
+            fs.unlinkSync(imagePath);
+        }
+    }
     await mongoose.connection.close();
 });
 describe("Blog controller" ,() => {
